@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :find_game!, only: [:show, :draw]
+  before_action :find_game!, only: [:show, :draw, :reset]
 
   def show
   end
@@ -13,6 +13,11 @@ class GamesController < ApplicationController
 
   def draw
     @game.draw
+    redirect_to show_games_url(slug: @game.slug)
+  end
+
+  def reset
+    @game.reset
     redirect_to show_games_url(slug: @game.slug)
   end
 
