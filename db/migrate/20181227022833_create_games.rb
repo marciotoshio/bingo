@@ -3,6 +3,7 @@ class CreateGames < ActiveRecord::Migration[5.2]
     create_table :games do |t|
       t.string :name
       t.text :board
+      t.integer :last_number
 
       t.timestamps
     end

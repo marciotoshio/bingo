@@ -11,4 +11,12 @@ class Game < ApplicationRecord
   def build_board
     self.board = (1..75).map{ |n| [n, false] }.to_h
   end
+
+  def draw
+    chosen = board.select{ |num, value| value }.keys
+    availables = (1..75).to_a - chosen
+    self.last_number = availables[rand(0..availables.size - 1)]
+    board[self.last_number] = true
+    save
+  end
 end

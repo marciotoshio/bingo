@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
+  before_action :find_game!, only: [:show, :draw]
+
   def show
-    @game = Game.friendly.find(params[:slug])
   end
 
   def create
@@ -10,9 +11,18 @@ class GamesController < ApplicationController
     end
   end
 
+  def draw
+    @game.draw
+    redirect_to show_games_url(slug: @game.slug)
+  end
+
   private
 
   def game_params
     params.require(:game).permit(:name)
+  end
+
+  def find_game!
+    @game = Game.friendly.find(params[:slug])
   end
 end
