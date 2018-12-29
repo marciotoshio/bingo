@@ -1,0 +1,29 @@
+.board {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 800px;
+  width: 290px;
+  list-style: none;
+}
+
+.board li {
+  width: 50px;
+  height: 50px;
+  background: #ccc;
+  color: #eee;
+  text-align: center;
+  font-size: 24px;
+  line-height: 45px;
+  font-weight: bold;
+  border: 1px solid white;
+}
+
+.board li.header {
+  background: black;
+}
+
+.board li.selected {
+  background: blue;
+  color: white;
+}
