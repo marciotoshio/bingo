@@ -5,7 +5,6 @@ class Game < ApplicationRecord
   friendly_id :name, use: :slugged
 
   has_many :players
-  accepts_nested_attributes_for :players
 
   serialize :board
 

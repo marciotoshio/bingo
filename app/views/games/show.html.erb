@@ -1,20 +1,13 @@
 <h1><%= @game.name %> <%= link_to t(:reset), reset_games_path(slug: @game.slug), :class => "btn btn-danger" %></h1>
 
 <div class="float-left">
-  <ul class="board">
-    <% @game.board.each_with_index do |(num, selected), index| %>
-      <% if(index % 15 == 0) %>
-        <li class="header"><%= ['B', 'I', 'N', 'G', 'O'][index / 15] %></li>
-      <% end %>
-      <li class="<%= selected ? 'selected' : '' %>"><%= num %></li>
-    <% end %>
-  </ul>
+  <%= render 'board' %>
 </div>
-<div class="float-left game-controls">
-  <%= link_to t(:draw), draw_games_path(slug: @game.slug), :class => "btn btn-primary" %>
-  <h2><%= t(:last_number) %>: <%= @game.last_number %></h2>
-  <% if @player %>
-    <hr />
-    <h2><%= @player.name %></h2>
-  <% end %>
+
+<div class="float-left">
+  <%= render 'game_controls' %>
+</div>
+
+<div class="float-left">
+  <%= render 'player' %>
 </div>

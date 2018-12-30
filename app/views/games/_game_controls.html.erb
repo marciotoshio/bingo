@@ -1,0 +1,9 @@
+<div class="game-controls">
+  <%= link_to t(:draw), draw_games_path(slug: @game.slug), :class => "btn btn-primary" %>
+  <h2><%= t(:last_number) %>: <%= @game.last_number %></h2>
+  <ul>
+    <% @game.players.each do |player| %>
+      <li><%= player.name %></li>
+    <% end %>
+  </ul>
+</div>
