@@ -30,4 +30,9 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  play: 'Play!'
+  player_name: 'Nickname'
+  game_name: 'Game name'
+  draw: 'Draw'
+  reset: 'New Game'
+  last_number: 'Last number'

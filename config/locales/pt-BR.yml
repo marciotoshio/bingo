@@ -1,0 +1,7 @@
+pt-BR:
+  play: 'Jogar!'
+  player_name: 'Apelido'
+  game_name: 'Nome do jogo'
+  draw: 'Sortear'
+  reset: 'Novo jogo'
+  last_number: 'Último número'
