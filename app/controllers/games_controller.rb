@@ -13,12 +13,12 @@ class GamesController < ApplicationController
 
   def draw
     @game.draw
-    redirect_to show_games_url(slug: @game.slug)
+    render :show
   end
 
   def reset
     @game.reset
-    redirect_to show_games_url(slug: @game.slug)
+    render :show
   end
 
   private

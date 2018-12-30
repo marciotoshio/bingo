@@ -1,4 +1,4 @@
-<h1><%= @game.name %></h1>
+<h1><%= @game.name %> <%= link_to 'Reset', reset_games_path(slug: @game.slug), :class => "btn btn-danger" %></h1>
 
 <div class="float-left">
   <ul class="board">
@@ -10,9 +10,7 @@
     <% end %>
   </ul>
 </div>
-<div class="float-left">
-   <%= link_to 'Draw', draw_games_path(slug: @game.slug), :class => "btn btn-primary" %>
-  Last Number: <%= @game.last_number %>
-  <br />
-  <%= link_to 'Reset', reset_games_path(slug: @game.slug), :class => "btn btn-danger" %>
+<div class="float-left game-controls">
+  <%= link_to 'Draw', draw_games_path(slug: @game.slug), :class => "btn btn-primary" %>
+  <h2>Last Number: <%= @game.last_number %></h2>
 </div>
