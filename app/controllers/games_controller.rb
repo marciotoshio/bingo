@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   end
 
   def create
-    @game = Game.find_or_initialize_by(game_params)
+    @game = Game.find_or_initialize_by(game_params.except(:slug))
     if @game.save
       set_player!
       redirect_to_game
