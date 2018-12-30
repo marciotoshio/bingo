@@ -1,15 +1,22 @@
-.board {
+.board, .card {
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  height: 800px;
   width: 250px;
   list-style: none;
 }
 
-.board li {
+.board {
+  height: 800px;
+}
+
+.card {
+  height: 302px;
+}
+
+.board li, .card li {
   width: 50px;
   height: 50px;
   background: #ccc;
@@ -21,11 +28,19 @@
   border: 1px solid white;
 }
 
-.board li.header {
+.card li a {
+  color: #eee;
+}
+
+.card li a:hover {
+  color: #fff;
+}
+
+.board li.header, .card li.header {
   background: black;
 }
 
-.board li.selected {
+.board li.selected, .card li.selected {
   background: blue;
   color: white;
 }

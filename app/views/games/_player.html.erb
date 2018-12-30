@@ -1,5 +1,17 @@
 <div class="player">
   <% if @player %>
     <h2><%= @player.name %></h2>
+    <ul class="card">
+      <% @player.card.each_with_index do |(num, selected), index| %>
+        <% if(index % 5 == 0) %>
+          <li class="header"><%= ['B', 'I', 'N', 'G', 'O'][index / 5] %></li>
+        <% end %>
+        <% if(num == :X) %>
+          <li class="selected"><%= num %></li>
+        <% else %>
+          <li class="<%= selected ? 'selected' : '' %>"><a href="#"><%= num %></a></li>
+        <% end %>
+      <% end %>
+    </ul>
   <% end %>
 </div>
