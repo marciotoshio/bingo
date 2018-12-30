@@ -13,7 +13,7 @@ class Game < ApplicationRecord
   end
 
   def draw
-    chosen = board.select{ |num, value| value }.keys
+    chosen = board.select{ |_, value| value }.keys
     availables = (1..75).to_a - chosen
     self.last_number = availables[rand(0..availables.size - 1)]
     board[self.last_number] = true
