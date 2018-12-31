@@ -19,4 +19,20 @@ RSpec.describe Player, :type => :model do
       expect(subject.card[key]).to eq(true)
     end
   end
+
+  describe '#reset' do
+    before do
+      subject.card.keys[0..10].each do |key|
+        subject.select_number(key)
+      end
+    end
+
+    it 'clear everything' do
+      subject.reset
+
+      subject.card.keys.each do |n|
+        expect(subject.card[n]).to eq(false)
+      end
+    end
+  end
 end

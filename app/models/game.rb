@@ -23,6 +23,7 @@ class Game < ApplicationRecord
   def reset
     self.last_number = nil
     build_board
+    players.each { |player| player.reset }
     save
   end
 end

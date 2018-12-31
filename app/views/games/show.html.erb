@@ -1,12 +1,19 @@
-<h1><%= @game.name %> <%= link_to t(:reset), reset_games_path(slug: @game.slug), :class => "btn btn-danger" %></h1>
+<h1>
+  <%= @game.name %>
+  <% if @player.master %>
+    <%= link_to t(:reset), reset_games_path(slug: @game.slug), :class => "btn btn-danger" %>
+  <% end %>
+</h1>
 
-<div class="float-left">
-  <%= render 'board' %>
-</div>
+<% if @player.master %>
+  <div class="float-left">
+    <%= render 'board' %>
+  </div>
 
-<div class="float-left">
-  <%= render 'game_controls' %>
-</div>
+  <div class="float-left">
+    <%= render 'game_controls' %>
+  </div>
+<% end %>
 
 <div class="float-left">
   <%= render 'player' %>

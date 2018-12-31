@@ -23,4 +23,9 @@ class Player < ApplicationRecord
     self.card[num.to_i] = !self.card[num.to_i]
     save
   end
+
+  def reset
+    build_card
+    save
+  end
 end

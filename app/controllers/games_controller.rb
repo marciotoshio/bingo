@@ -8,13 +8,13 @@ class GamesController < ApplicationController
   def create
     @game = Game.find_or_initialize_by(game_params.except(:slug))
     if @game.save
-      set_player!
+      set_player!(master: true)
       redirect_to_game
     end
   end
 
   def update
-    set_player!
+    set_player!(master: false)
     redirect_to_game
   end
 
@@ -35,8 +35,9 @@ class GamesController < ApplicationController
 
   private
 
-  def set_player!
+  def set_player!(master:)
     @player = Player.find_or_create_by(name: player_params[:name], game: @game)
+    @player.master = master
     @player.save
     cookies.permanent[:player] = @player.id
   end

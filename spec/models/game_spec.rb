@@ -27,12 +27,24 @@ RSpec.describe Game, :type => :model do
   end
 
   describe '#reset' do
-    it 'clear everything' do
-      10.times { subject.draw }
+    let(:player_1) { Player.new }
+    let(:player_2) { Player.new }
 
+    before do
+      10.times { subject.draw }
+      player_1.build_card
+      player_2.build_card
+      allow(player_1).to receive(:reset)
+      allow(player_2).to receive(:reset)
+      subject.players = [player_1, player_2]
+    end
+
+    it 'clear everything' do
       subject.reset
 
       expect(subject.last_number).to be_nil
+      expect(player_1).to have_received(:reset)
+      expect(player_2).to have_received(:reset)
       (1..75).each do |n|
         expect(subject.board[n]).to eq(false)
       end
