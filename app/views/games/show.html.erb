@@ -5,16 +5,19 @@
   <% end %>
 </h1>
 
-<% if @player.master %>
-  <div class="float-left">
-    <%= render 'board' %>
-  </div>
+<div class="row">
+  <% if @player.master %>
+    <div class="col">
+      <%= render 'board' %>
+    </div>
 
-  <div class="float-left">
-    <%= render 'game_controls' %>
-  </div>
-<% end %>
+    <div class="col">
+      <%= render 'game_controls' %>
+    </div>
+  <% end %>
 
-<div class="float-left">
-  <%= render 'player' %>
+  <div class="col">
+    <%= render 'last_number' %>
+    <%= render 'player' %>
+  </div>
 </div>
