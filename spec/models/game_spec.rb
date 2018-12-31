@@ -27,6 +27,12 @@ RSpec.describe Game, :type => :model do
   end
 
   describe '#last_number_with_column' do
+    context 'when last_number is nil' do
+      before { allow(subject).to receive(:last_number).and_return(nil) }
+
+      it { expect(subject.last_number_with_column).to eq('') }
+    end
+
     context 'when last_number is 5' do
       before { allow(subject).to receive(:last_number).and_return(5) }
 

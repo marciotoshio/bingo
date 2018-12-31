@@ -21,6 +21,7 @@ class Game < ApplicationRecord
   end
 
   def last_number_with_column
+    return '' if last_number.nil?
     i = (last_number / 15.0).ceil - 1
     col = ['B', 'I', 'N', 'G', 'O'][i]
     "#{col} #{last_number}"
