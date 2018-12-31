@@ -18,4 +18,9 @@ class Player < ApplicationRecord
       end
     end
   end
+
+  def select_number(num)
+    self.card[num.to_i] = !self.card[num.to_i]
+    save
+  end
 end

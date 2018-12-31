@@ -9,7 +9,9 @@
         <% if(num == :X) %>
           <li class="selected"><%= num %></li>
         <% else %>
-          <li class="<%= selected ? 'selected' : '' %>"><a href="#"><%= num %></a></li>
+          <li class="<%= selected ? 'selected' : '' %>">
+            <%= link_to num, select_number_games_path(number: num) %>
+          </li>
         <% end %>
       <% end %>
     </ul>

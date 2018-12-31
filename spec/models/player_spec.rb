@@ -11,4 +11,12 @@ RSpec.describe Player, :type => :model do
       expect(subject.card[:X]).to eq(true)
     end
   end
+
+  describe '#select_number' do
+    it 'mark the selected number as true' do
+      key = subject.card.keys[10]
+      subject.select_number(key)
+      expect(subject.card[key]).to eq(true)
+    end
+  end
 end

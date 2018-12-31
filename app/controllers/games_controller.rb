@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :set_game!, only: [:show, :draw, :reset]
+  before_action :set_game!, only: [:show, :draw, :reset, :select_number]
   before_action :find_game!, only: :update
 
   def show
@@ -25,6 +25,11 @@ class GamesController < ApplicationController
 
   def reset
     @game.reset
+    redirect_to_game
+  end
+
+  def select_number
+    @player.select_number(params[:number])
     redirect_to_game
   end
 
