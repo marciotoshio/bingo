@@ -20,6 +20,12 @@ class Game < ApplicationRecord
     save
   end
 
+  def last_number_with_column
+    i = (last_number / 15.0).ceil - 1
+    col = ['B', 'I', 'N', 'G', 'O'][i]
+    "#{col} #{last_number}"
+  end
+
   def reset
     self.last_number = nil
     build_board

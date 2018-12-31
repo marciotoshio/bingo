@@ -21,7 +21,7 @@ class GamesController < ApplicationController
   def draw
     @game.draw
     ActionCable.server.broadcast 'last_number',
-        last_number: @game.last_number
+        last_number: @game.last_number_with_column
     redirect_to_game
   end
 

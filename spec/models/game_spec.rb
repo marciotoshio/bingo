@@ -26,6 +26,38 @@ RSpec.describe Game, :type => :model do
     end
   end
 
+  describe '#last_number_with_column' do
+    context 'when last_number is 5' do
+      before { allow(subject).to receive(:last_number).and_return(5) }
+
+      it { expect(subject.last_number_with_column).to eq('B 5') }
+    end
+
+    context 'when last_number is 23' do
+      before { allow(subject).to receive(:last_number).and_return(23) }
+
+      it { expect(subject.last_number_with_column).to eq('I 23') }
+    end
+
+    context 'when last_number is 37' do
+      before { allow(subject).to receive(:last_number).and_return(37) }
+
+      it { expect(subject.last_number_with_column).to eq('N 37') }
+    end
+
+    context 'when last_number is 56' do
+      before { allow(subject).to receive(:last_number).and_return(56) }
+
+      it { expect(subject.last_number_with_column).to eq('G 56') }
+    end
+
+    context 'when last_number is 73' do
+      before { allow(subject).to receive(:last_number).and_return(73) }
+
+      it { expect(subject.last_number_with_column).to eq('O 73') }
+    end
+  end
+
   describe '#reset' do
     let(:player_1) { Player.new }
     let(:player_2) { Player.new }
