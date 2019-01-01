@@ -3,6 +3,6 @@
     <% if(index % 15 == 0) %>
       <li class="header"><%= ['B', 'I', 'N', 'G', 'O'][index / 15] %></li>
     <% end %>
-    <li class="<%= selected ? 'selected' : '' %>"><%= num %></li>
+    <li id="num_<%= num %>" class="<%= selected ? 'selected' : '' %>"><%= num %></li>
   <% end %>
 </ul>

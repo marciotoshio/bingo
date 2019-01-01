@@ -64,6 +64,18 @@ RSpec.describe Game, :type => :model do
     end
   end
 
+  describe '#need_game_master' do
+    context 'when already have a game master' do
+      let(:player_1) { Player.new(master: true) }
+      let(:player_2) { Player.new(master: false) }
+    end
+
+    context 'when does not have a game master' do
+      let(:player_1) { Player.new(master: false) }
+      let(:player_2) { Player.new(master: false) }
+    end
+  end
+
   describe '#reset' do
     let(:player_1) { Player.new }
     let(:player_2) { Player.new }
