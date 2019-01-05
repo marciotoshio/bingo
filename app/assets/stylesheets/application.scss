@@ -1,2 +1,26 @@
 @import "bootstrap";
 @import "./game";
+
+h1.title {
+  text-align: center;
+  font-family: 'Titan One', cursive;
+  font-size: 80px;
+  color: #ff3fed;
+  text-shadow:
+    -5px -5px 0 #6f37c9,
+    5px -5px 0 #6f37c9,
+    -5px 5px 0 #6f37c9,
+    5px 5px 0 #6f37c9
+}
+
+.jumbotron {
+  background-color: #007747;
+}
+
+.text-muted {
+  color: #fff !important;
+}
+
+.form-inline {
+  display: inline;
+}
