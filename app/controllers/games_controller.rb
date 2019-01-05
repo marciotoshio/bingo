@@ -1,21 +1,21 @@
 class GamesController < ApplicationController
   before_action :set_game!, only: [:show, :draw, :reset, :select_number]
-  before_action :find_game!, only: :update
-
-  def show
-  end
 
   def create
-    @game = Game.find_or_initialize_by(game_params.except(:slug))
+    @game = Game.find_or_initialize_by(name: game_params[:name])
     if @game.save
-      set_player!(master: true)
+      set_player!
       redirect_to_game
     end
   end
 
   def update
-    set_player!(master: false)
+    @game = find_game(game_params[:slug])
+    set_player!
     redirect_to_game
+  end
+
+  def show
   end
 
   def draw
@@ -41,9 +41,9 @@ class GamesController < ApplicationController
 
   private
 
-  def set_player!(master:)
+  def set_player!
     @player = Player.find_or_create_by(name: player_params[:name], game: @game)
-    @player.master = master
+    @player.master = @game.needs_master?
     @player.save
     cookies.permanent[:player] = @player.id
   end
@@ -58,14 +58,5 @@ class GamesController < ApplicationController
 
   def player_params
     params.require(:player).permit(:name)
-  end
-
-  def set_game!
-    @game = Game.friendly.find(params[:slug])
-    @player = Player.find(cookies[:player])
-  end
-
-  def find_game!
-    @game = Game.friendly.find(game_params[:slug])
   end
 end

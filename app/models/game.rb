@@ -34,6 +34,10 @@ class Game < ApplicationRecord
     save
   end
 
+  def needs_master?
+    players.none? { |player| player.master }
+  end
+
   def share_url
     "#{Rails.configuration.app_url}/?game=#{slug}"
   end

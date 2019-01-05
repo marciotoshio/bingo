@@ -34,17 +34,8 @@ function reset() {
   window.location.reload(false);
 }
 
-function bindDrawNumber() {
-  $('.draw-number').on('click', function(e) {
-    e.preventDefault();
-    $.get($(this).attr('href'));
-  });
-}
-
 $(document).on('turbolinks:load', function() {
   if($('#game_id').val() != null) {
     createSubscription($('#game_id').val());
   }
-
-  bindDrawNumber();
 });

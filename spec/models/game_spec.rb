@@ -64,15 +64,27 @@ RSpec.describe Game, :type => :model do
     end
   end
 
-  describe '#need_game_master' do
+  describe '#needs_master?' do
+    context 'when does not have players' do
+      it { expect(subject.needs_master?).to eq(true) }
+    end
+
     context 'when already have a game master' do
       let(:player_1) { Player.new(master: true) }
       let(:player_2) { Player.new(master: false) }
+
+      before { subject.players = [player_1, player_2] }
+
+      it { expect(subject.needs_master?).to eq(false) }
     end
 
     context 'when does not have a game master' do
       let(:player_1) { Player.new(master: false) }
       let(:player_2) { Player.new(master: false) }
+
+      before { subject.players = [player_1, player_2] }
+
+      it { expect(subject.needs_master?).to eq(true) }
     end
   end
 

@@ -23,6 +23,6 @@
 
   <div class="col">
     <%= render 'last_number' %>
-    <%= render 'player' %>
+    <%= render partial: 'players/show', locals: { player: @player } %>
   </div>
 </div>

@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     get ':slug/draw', to: 'games#draw', as: 'draw'
     get ':slug/reset', to: 'games#reset', as: 'reset'
     get ':slug/select_number/:number', to: 'games#select_number', as: 'select_number'
+    get ':slug/players/show/:id', to: 'players#show', as: 'player'
   end
+
+
 
   root to: 'home#index'
 end
