@@ -100,4 +100,12 @@ RSpec.describe Game, :type => :model do
       end
     end
   end
+
+  describe '#share_url' do
+    let(:slug) { 'rspec-bingo' }
+
+    before { allow(subject).to receive(:slug).and_return(slug) }
+
+    it { expect(subject.share_url).to eq("http://bingo.test/?game=#{slug}") }
+  end
 end

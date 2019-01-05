@@ -1,4 +1,9 @@
 <div class="game-controls">
+  <div class="share-container">
+    <label for="share-url">Share url</label>
+    <input id="share-url" class="form-control" type="text" value="<%= @game.share_url %>" readonly>
+  </div>
+
   <%= link_to t(:draw), draw_games_path(slug: @game.slug), :class => "btn btn-primary draw-number" %>
 
   <h2><%= t('players') %></h2>

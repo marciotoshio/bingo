@@ -33,4 +33,8 @@ class Game < ApplicationRecord
     players.each { |player| player.reset }
     save
   end
+
+  def share_url
+    "#{Rails.configuration.app_url}/?game=#{slug}"
+  end
 end
