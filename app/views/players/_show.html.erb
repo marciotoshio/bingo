@@ -9,7 +9,11 @@
         <li class="selected"><%= num %></li>
       <% else %>
         <li class="<%= selected ? 'selected' : '' %>">
-          <%= link_to num, select_number_games_path(number: num) %>
+          <% if(@no_link) %>
+            <%= num %>
+          <% else %>
+            <%= link_to num, select_number_games_path(number: num) %>
+          <% end %>
         </li>
       <% end %>
     <% end %>
