@@ -12,6 +12,7 @@ class GamesController < ApplicationController
   def update
     @game = find_game(game_params[:slug])
     set_player!
+    broadcast_new_player
     redirect_to_game
   end
 
@@ -20,17 +21,12 @@ class GamesController < ApplicationController
 
   def draw
     @game.draw
-    ActionCable.server.broadcast("game_#{@game.id}",
-      action: 'set_last_number',
-      last_number: @game.last_number_with_column
-    )
+    broadcast_last_number
   end
 
   def reset
     @game.reset
-    ActionCable.server.broadcast("game_#{@game.id}",
-      action: 'reset'
-    )
+    broadcast_reset
     redirect_to_game
   end
 
