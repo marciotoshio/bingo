@@ -41,10 +41,12 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options)
   config.active_storage.service = :local
 
+  domain = 'letsbingo.herokuapp.com'
+
   # Mount Action Cable outside main process or domain
   # config.action_cable.mount_path = nil
-  config.action_cable.url = 'wss://ancient-woodland-57174.herokuapp.com/cable'
-  config.action_cable.allowed_request_origins = [ 'https://ancient-woodland-57174.herokuapp.com', 'http://ancient-woodland-57174.herokuapp.com' ]
+  config.action_cable.url = "wss://#{domain}/cable"
+  config.action_cable.allowed_request_origins = [ "https://#{domain}", "http://#{domain}" ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
@@ -92,5 +94,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.app_url = "https://letsbingo.herokuapp.com"
+  config.app_url = "https://#{domain}"
 end

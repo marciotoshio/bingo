@@ -2,11 +2,6 @@
 //= require_self
 //= require_tree .
 
-this.App = {};
-
-App.cable = ActionCable.createConsumer();
-
-
 function createSubscription(gameId) {
   options = {
     channel: "GameChannel",
