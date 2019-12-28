@@ -35,7 +35,7 @@ gem 'redis', '~> 4.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'bootstrap', '~> 4.2.1'
+gem 'bootstrap', '~> 4.3.1'
 gem 'friendly_id', '~> 5.2.4'
 gem 'jquery-rails'
 
