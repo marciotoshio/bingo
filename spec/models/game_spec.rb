@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Game, :type => :model do
+RSpec.describe Game, type: :model do
   before do
     allow(subject).to receive(:save)
     subject.build_board

@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe Player, :type => :model do
+RSpec.describe Player, type: :model do
   before do
     allow(subject).to receive(:save)
     subject.build_card
@@ -8,7 +10,7 @@ RSpec.describe Player, :type => :model do
 
   describe '#card' do
     it 'has a selected X key' do
-      expect(subject.card[:X]).to eq(true)
+      expect(subject.card[:X]).to be_truthy
     end
   end
 
@@ -16,7 +18,7 @@ RSpec.describe Player, :type => :model do
     it 'mark the selected number as true' do
       key = subject.card.keys[10]
       subject.select_number(key)
-      expect(subject.card[key]).to eq(true)
+      expect(subject.card[key]).to be_truthy
     end
   end
 
@@ -31,7 +33,11 @@ RSpec.describe Player, :type => :model do
       subject.reset
 
       subject.card.keys.each do |n|
-        expect(subject.card[n]).to eq(false)
+        if n == :X
+          expect(subject.card[n]).to be_truthy
+        else
+          expect(subject.card[n]).to be_falsey
+        end
       end
     end
   end

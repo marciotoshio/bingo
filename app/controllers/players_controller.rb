@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlayersController < ApplicationController
   def show
     game = find_game(params[:slug])

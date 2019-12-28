@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
 class GamesController < ApplicationController
-  before_action :set_game!, only: [:show, :draw, :reset, :select_number]
+  before_action :set_game!, only: %i[show draw reset select_number]
 
   def create
     @game = Game.find_or_initialize_by(name: game_params[:name])
-    if @game.save
-      set_player!
-      redirect_to_game
-    end
+    return unless @game.save
+
+    set_player!
+    redirect_to_game
   end
 
   def update
@@ -16,8 +18,7 @@ class GamesController < ApplicationController
     redirect_to_game
   end
 
-  def show
-  end
+  def show; end
 
   def draw
     @game.draw
@@ -49,7 +50,7 @@ class GamesController < ApplicationController
   end
 
   def game_params
-    params.require(:game).permit([:name, :slug])
+    params.require(:game).permit(%i[name slug])
   end
 
   def player_params

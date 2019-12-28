@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -59,7 +61,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_cable.url = "ws://localhost:3000/cable"
+  config.action_cable.url = 'ws://localhost:3000/cable'
 
-  config.app_url = "http://localhost:3000"
+  config.app_url = 'http://localhost:3000'
 end

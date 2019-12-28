@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
@@ -9,8 +11,6 @@ Rails.application.routes.draw do
     get ':slug/select_number/:number', to: 'games#select_number', as: 'select_number'
     get ':slug/players/show/:id', to: 'players#show', as: 'player'
   end
-
-
 
   root to: 'home#index'
 end
