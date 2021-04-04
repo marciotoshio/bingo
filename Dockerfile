@@ -1,22 +1,21 @@
-FROM ruby:2.6.3
-RUN apt-get update -qq && apt-get install -y build-essential libpq-dev default-jre
+FROM ruby:3.0.0
 
-# https://github.com/nodesource/distributions#installation-instructions
-RUN curl -sL https://deb.nodesource.com/setup_10.x | bash - \
-        && apt-get install -y nodejs
+RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs npm
+RUN npm install -g yarn
 
 ENV APP_HOME /myapp
+
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
+ADD . $APP_HOME
 
-COPY Gemfile* $APP_HOME/
+COPY ./entrypoint.sh /
+RUN chmod +x /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
 
-ENV BUNDLE_GEMFILE=$APP_HOME/Gemfile \
-  BUNDLE_JOBS=2 \
-  BUNDLE_PATH=/bundle \
-  GEM_PATH=/bundle \
-  GEM_HOME=/bundle
+ENV BUNDLE_PATH=/bundle \
+    BUNDLE_BIN=/bundle/bin \
+    GEM_HOME=/bundle
+ENV PATH="${BUNDLE_BIN}:${PATH}"
 
-RUN bundle install
-
-COPY . $APP_HOME
+RUN gem install bundler:2.2.15

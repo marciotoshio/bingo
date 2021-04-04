@@ -1,3 +1,0 @@
-#!/bin/bash
-
-docker-compose run --rm --name app web bundle exec rails db:seed
