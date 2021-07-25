@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
   end
 
   def broadcast_reset
-    ActionCable.server.broadcast("game_#{@game.id}", action: 'reset')
+    ActionCable.server.broadcast("game_#{@game.id}", { action: 'reset' })
   end
 
   def broadcast_new_player
