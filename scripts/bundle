@@ -1,3 +1,4 @@
 #!/bin/bash
 
-docker-compose run --rm --name app web bundle $@
+RAILS_ENV="${RAILS_ENV:-development}"
+docker-compose run --rm -e RAILS_ENV=$RAILS_ENV web bundle $@
