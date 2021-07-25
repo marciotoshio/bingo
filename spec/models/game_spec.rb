@@ -72,43 +72,43 @@ RSpec.describe Game, type: :model do
     end
 
     context 'when already have a game master' do
-      let(:player_1) { Player.new(master: true) }
-      let(:player_2) { Player.new(master: false) }
+      let(:player1) { Player.new(master: true) }
+      let(:player2) { Player.new(master: false) }
 
-      before { subject.players = [player_1, player_2] }
+      before { subject.players = [player1, player2] }
 
       it { expect(subject.needs_master?).to eq(false) }
     end
 
     context 'when does not have a game master' do
-      let(:player_1) { Player.new(master: false) }
-      let(:player_2) { Player.new(master: false) }
+      let(:player1) { Player.new(master: false) }
+      let(:player2) { Player.new(master: false) }
 
-      before { subject.players = [player_1, player_2] }
+      before { subject.players = [player1, player2] }
 
       it { expect(subject.needs_master?).to eq(true) }
     end
   end
 
   describe '#reset' do
-    let(:player_1) { Player.new }
-    let(:player_2) { Player.new }
+    let(:player1) { Player.new }
+    let(:player2) { Player.new }
 
     before do
       10.times { subject.draw }
-      player_1.build_card
-      player_2.build_card
-      allow(player_1).to receive(:reset)
-      allow(player_2).to receive(:reset)
-      subject.players = [player_1, player_2]
+      player1.build_card
+      player2.build_card
+      allow(player1).to receive(:reset)
+      allow(player2).to receive(:reset)
+      subject.players = [player1, player2]
     end
 
     it 'clear everything' do
       subject.reset
 
       expect(subject.last_number).to be_nil
-      expect(player_1).to have_received(:reset)
-      expect(player_2).to have_received(:reset)
+      expect(player1).to have_received(:reset)
+      expect(player2).to have_received(:reset)
       (1..75).each do |n|
         expect(subject.board[n]).to eq(false)
       end

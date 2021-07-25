@@ -32,7 +32,7 @@ RSpec.describe Player, type: :model do
     it 'clear everything' do
       subject.reset
 
-      subject.card.keys.each do |n|
+      subject.card.each_key do |n|
         if n == :X
           expect(subject.card[n]).to be_truthy
         else
