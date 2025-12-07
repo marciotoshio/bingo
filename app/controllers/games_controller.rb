@@ -24,6 +24,11 @@ class GamesController < ApplicationController
     @game = find_game(params[:slug])
   end
 
+  def show_qr_code
+    @game = find_game(params[:slug])
+    broadcast_show_qr_code
+  end
+
   def draw
     @game.draw
     broadcast_last_number

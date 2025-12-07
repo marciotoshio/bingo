@@ -10,11 +10,12 @@
   </div>
 
   <div class="qr-container mb-3 text-center">
-    <button class="btn btn-outline-primary btn-sm mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#qrCode" aria-expanded="false">
-      📱 Show QR Code
-    </button>
+    <%= link_to "📱 #{t(:show_qr_code)}",
+        show_qr_code_games_path(slug: @game.slug),
+        class: "btn btn-outline-primary btn-sm mb-2 show-qr-code",
+        data: { turbo: "false", turbo_prefetch: "false", bs_toggle: "collapse", bs_target: "#qrCode" } %>
     <div class="collapse" id="qrCode">
-      <div id="qrcode" class="d-inline-block p-2 bg-white rounded"></div>
+      <div id="qrcode" class="d-inline-block p-2 bg-white rounded" data-share-url="<%= @game.share_url %>"></div>
     </div>
   </div>
 
@@ -24,24 +25,3 @@
     class: "btn btn-primary btn-lg w-100 draw-number",
     data: { turbo: "false", turbo_prefetch: "false" } %>
 </div>
-
-<script>
-  document.addEventListener('turbo:load', function() {
-    const qrContainer = document.getElementById('qrcode');
-    if (qrContainer && qrContainer.children.length === 0) {
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js';
-      script.onload = function() {
-        new QRCode(qrContainer, {
-          text: '<%= @game.share_url %>',
-          width: 200,
-          height: 200,
-          colorDark: '#667eea',
-          colorLight: '#ffffff',
-          correctLevel: QRCode.CorrectLevel.H
-        });
-      };
-      document.head.appendChild(script);
-    }
-  });
-</script>

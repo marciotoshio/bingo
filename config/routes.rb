@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     get ':slug/select_number/:number', to: 'games#select_number', as: 'select_number'
     get ':slug/players/show/:id', to: 'players#show', as: 'player'
     get ':slug/big', to: 'games#big', as: 'big'
+    get ':slug/show_qr_code', to: 'games#show_qr_code', as: 'show_qr_code'
   end
 
   root to: 'home#index'

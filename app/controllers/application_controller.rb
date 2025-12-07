@@ -37,4 +37,8 @@ class ApplicationController < ActionController::Base
     }
     ActionCable.server.broadcast("game_#{@game.id}", message)
   end
+
+  def broadcast_show_qr_code
+    ActionCable.server.broadcast("game_#{@game.id}", { action: 'show_qr_code' })
+  end
 end

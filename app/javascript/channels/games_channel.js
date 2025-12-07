@@ -19,6 +19,9 @@ function createSubscription(gameId) {
         case 'new_player':
           addNewPlayer(data.player);
           break;
+        case 'show_qr_code':
+          showQrCode();
+          break;
       }
     }
   });
@@ -40,6 +43,12 @@ function addNewPlayer(player) {
   a.text(player.name);
   li.append(a);
   $('.players').append(li);
+}
+
+function showQrCode() {
+  const modalElement = document.getElementById('qrcode-modal');
+  const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
+  modal.toggle();
 }
 
 $(document).on('turbo:load', function () {
