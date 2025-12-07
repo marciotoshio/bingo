@@ -1,11 +1,11 @@
-<div class="container py-4 text-center">
+<div class="bingo-card-container text-center">
   <div class="row mb-3">
     <% ['B', 'I', 'N', 'G', 'O'].each do |letter| %>
       <div class="col fw-bold fs-2"><%= letter %></div>
     <% end %>
   </div>
 
-  <div class="row mx-auto" style="max-width: 400px;">
+  <div class="row bingo-grid">
     <% card_array = player.card.to_a %>
     <% 5.times do |col| %>
       <div class="col px-1">

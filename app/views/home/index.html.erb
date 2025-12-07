@@ -1,13 +1,27 @@
-<div class="container">
-  <h1 class="jumbotron-heading title text-center">LET'S BINGO!</h1>
+<div class="hero-section">
+  <div class="container">
+    <div class="hero-content text-center">
+      <h1 class="hero-title title">LET'S BINGO!</h1>
+      <p class="hero-subtitle">Ready to shout BINGO? Create your game and let the fun begin!</p>
 
-  <section class="jumbotron text-center">
-    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-    <%= form_for @game, url: games_path(@game), :html => { :class => 'form-inline' } do |f| %>
-      <%= text_field_tag 'player[name]', '', class: 'form-control mb-2 mr-sm-2', placeholder: t(:player_name) %>
-      <%= f.text_field :name, class: 'form-control mb-2 mr-sm-2', placeholder: t(:game_name) %>
-      <%= f.hidden_field :slug %>
-      <%= f.submit t(:play), class: 'btn btn-primary mb-2' %>
-    <% end %>
-  </section>
+      <div class="hero-form-card">
+        <%= form_for @game, url: games_path(@game), html: { class: 'hero-form' } do |f| %>
+          <div class="form-group mb-3">
+            <label for="player_name" class="form-label">Your Nickname</label>
+            <%= text_field_tag 'player[name]', '', class: 'form-control form-control-lg', placeholder: t(:player_name), id: 'player_name', required: true %>
+          </div>
+
+          <div class="form-group mb-4">
+            <label for="game_name" class="form-label">Game Name</label>
+            <%= f.text_field :name, class: 'form-control form-control-lg', placeholder: t(:game_name), id: 'game_name', required: true %>
+            <%= f.hidden_field :slug %>
+          </div>
+
+          <%= f.submit t(:play), class: 'btn btn-primary btn-lg w-100 hero-btn' %>
+        <% end %>
+      </div>
+
+      <p class="hero-tagline mt-4">🎉 The most exciting way to play bingo with friends! 🎉</p>
+    </div>
+  </div>
 </div>
