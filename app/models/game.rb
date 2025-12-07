@@ -8,7 +8,7 @@ class Game < ApplicationRecord
 
   has_many :players
 
-  serialize :board
+  serialize :board, coder: YAML
 
   def build_board
     self.board = (1..75).map { |n| [n, false] }.to_h

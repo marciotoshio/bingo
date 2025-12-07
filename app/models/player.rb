@@ -5,7 +5,7 @@ class Player < ApplicationRecord
 
   belongs_to :game
 
-  serialize :card
+  serialize :card, coder: YAML
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def build_card

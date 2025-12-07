@@ -1,30 +1,15 @@
 version: '3'
 services:
-  db:
-    image: postgres
-    environment:
-      POSTGRES_PASSWORD: postgres
-  redis:
-    image: redis
-  bundle:
-    image: busybox
-    volumes:
-      - /bundle
   web:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - .:/myapp
-    volumes_from:
-      - bundle
     ports:
       - "3000:3000"
-    depends_on:
-      - db
-      - redis
-    environment:
-      - IP=db
-      - USERNAME=postgres
-      - PASSWORD=postgres
+    env-file:
+      - .env.dev
     stdin_open: true
     tty: true

@@ -1,30 +1,32 @@
-//= require cable
-//= require_self
-//= require_tree .
+import consumer from "channels/consumer"
+import $ from "jquery"
 
 function createSubscription(gameId) {
-  options = {
+  const options = {
     channel: "GameChannel",
     game_id: gameId
   };
 
-  App.cable.subscriptions.create(options, {
-    received: function(data) {
-      switch(data.action) {
+  consumer.subscriptions.create(options, {
+    received: function (data) {
+      switch (data.action) {
         case 'set_last_number':
-          setLastNumber(data.last_number);
+          setLastNumber(data.last_number, data.raw_last_number);
+          break;
         case 'reset':
           reset();
+          break;
         case 'new_player':
           addNewPlayer(data.player);
+          break;
       }
     }
   });
 }
 
-function setLastNumber(lastNumber) {
+function setLastNumber(lastNumber, rawLastNumber) {
   $(".last-number").text(lastNumber);
-  $('#num_' + lastNumber).addClass('selected');
+  $('#num_' + rawLastNumber).addClass('selected');
 }
 
 function reset() {
@@ -39,8 +41,8 @@ function addNewPlayer(player) {
   $('.players').append(li);
 }
 
-$(document).on('turbolinks:load', function() {
-  if($('#game_id').val() != null) {
+$(document).on('turbo:load', function () {
+  if ($('#game_id').val() != null) {
     createSubscription($('#game_id').val());
   }
 });

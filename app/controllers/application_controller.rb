@@ -15,7 +15,11 @@ class ApplicationController < ActionController::Base
   end
 
   def broadcast_last_number
-    message = { action: 'set_last_number', last_number: @game.last_number_with_column }
+    message = {
+      action: 'set_last_number',
+      last_number: @game.last_number_with_column,
+      raw_last_number: @game.last_number
+    }
     ActionCable.server.broadcast("game_#{@game.id}", message)
   end
 

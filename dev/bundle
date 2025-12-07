@@ -1,0 +1,4 @@
+#!/bin/bash
+
+RUNNER=$(command -v podman || command -v docker)
+$RUNNER run --rm -v .:/rails:z $(basename $(pwd))_dev bundle $@

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+RUNNER=$(command -v podman || command -v docker)
+$RUNNER run -it --env-file ./.env.test -v .:/rails:z --rm $(basename $(pwd))_dev rspec $@

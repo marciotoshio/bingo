@@ -1,0 +1,4 @@
+#!/bin/bash
+
+RUNNER=$(command -v podman || command -v docker)
+$RUNNER run -it --env-file ./.env.dev -v .:/rails:z --rm -p 3000:3000 $(basename $(pwd))_dev rails server -b 0.0.0.0

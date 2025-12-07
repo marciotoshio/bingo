@@ -23,6 +23,7 @@ class GamesController < ApplicationController
   def draw
     @game.draw
     broadcast_last_number
+    head :ok
   end
 
   def reset
