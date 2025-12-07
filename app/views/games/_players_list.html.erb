@@ -1,0 +1,15 @@
+<div>
+  <h3><%= t('players') %></h3>
+  <ul class="players list-unstyled">
+    <% @game.players.sort_by(&:name).each do |player| %>
+      <li class="mb-2">
+        <%= link_to player.name, player_games_path(slug: @game.slug, id: player.id), class: 'player-link text-decoration-none' %>
+        <% if player.master %>
+          <span class="badge bg-primary ms-2">Master</span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+
+  <div class="player-card mt-3"></div>
+</div>

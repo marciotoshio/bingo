@@ -3,17 +3,9 @@
     <label for="share-url">Share url</label>
     <input id="share-url" class="form-control" type="text" value="<%= @game.share_url %>" readonly>
   </div>
-
-  <%= link_to t(:draw), draw_games_path(slug: @game.slug), class: "btn btn-primary draw-number", data: { turbo_prefetch: "false" } %>
-
-  <h2><%= t('players') %></h2>
-  <ul class="players">
-    <% @game.players.sort_by(&:name).each do |player| %>
-      <li>
-        <%= link_to player.name, player_games_path(slug: @game.slug, id: player.id), class: "player-link"  %>
-      </li>
-    <% end %>
-  </ul>
-
-  <div class="player-card"></div>
+  <h2><%= t(:draw) %></h2>
+  <%= link_to t(:draw),
+    draw_games_path(slug: @game.slug),
+    class: "btn btn-primary btn-lg w-100",
+    data: { turbo_prefetch: "false" } %>
 </div>
