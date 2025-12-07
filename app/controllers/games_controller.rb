@@ -20,6 +20,10 @@ class GamesController < ApplicationController
 
   def show; end
 
+  def big
+    @game = find_game(params[:slug])
+  end
+
   def draw
     @game.draw
     broadcast_last_number

@@ -1,9 +1,5 @@
 <div class="bingo-board-container text-center">
-  <div class="row mb-3">
-    <% ['B', 'I', 'N', 'G', 'O'].each do |letter| %>
-      <div class="col fw-bold fs-2"><%= letter %></div>
-    <% end %>
-  </div>
+  <%= render 'games/bingo_title_row' %>
 
   <div class="row bingo-grid">
     <% board_array = @game.board.to_a %>
