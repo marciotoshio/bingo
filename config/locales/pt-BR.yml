@@ -6,3 +6,4 @@ pt-BR:
   player_name: 'Apelido'
   players: 'Jogadores'
   reset: 'Novo jogo'
+  reset_confirm: 'Tem certeza que deseja iniciar um novo jogo? Isso irá resetar todas as cartelas e limpar o tabuleiro.'

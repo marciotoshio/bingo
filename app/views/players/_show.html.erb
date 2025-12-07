@@ -5,13 +5,19 @@
     <% end %>
   </div>
 
-  <div class="row row-cols-5 g-2 mx-auto" style="max-width: 400px;">
-    <% player.card.each do |num, selected| %>
-      <div class="col">
-        <% if num == :X %>
-          <div class="btn w-100 py-3 fs-4 border rounded btn-light">X</div>
-        <% else %>
-          <%= link_to num, select_number_games_path(number: num), method: :post, class: "btn w-100 py-3 fs-4 border rounded #{selected ? 'btn-primary text-white' : 'btn-light'}" %>
+  <div class="row mx-auto" style="max-width: 400px;">
+    <% card_array = player.card.to_a %>
+    <% 5.times do |col| %>
+      <div class="col px-1">
+        <% 5.times do |row| %>
+          <% num, selected = card_array[col * 5 + row] %>
+          <div class="mb-2">
+            <% if num == :X %>
+              <div class="btn w-100 py-3 fs-4 border rounded btn-light">X</div>
+            <% else %>
+              <%= link_to num, select_number_games_path(number: num), method: :post, class: "btn w-100 py-3 fs-4 border rounded #{selected ? 'btn-primary text-white' : 'btn-light'}" %>
+            <% end %>
+          </div>
         <% end %>
       </div>
     <% end %>

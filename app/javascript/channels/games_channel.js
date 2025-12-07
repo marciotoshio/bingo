@@ -26,7 +26,8 @@ function createSubscription(gameId) {
 
 function setLastNumber(lastNumber, rawLastNumber) {
   $(".last-number").text(lastNumber);
-  $('#num_' + rawLastNumber).addClass('selected');
+  const element = $('#num_' + rawLastNumber);
+  element.removeClass('btn-light').addClass('btn-primary text-white');
 }
 
 function reset() {

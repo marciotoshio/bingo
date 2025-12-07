@@ -1,8 +1,23 @@
-<ul class="board">
-  <% @game.board.each_with_index do |(num, selected), index| %>
-    <% if(index % 15 == 0) %>
-      <li class="header"><%= ['B', 'I', 'N', 'G', 'O'][index / 15] %></li>
+<div class="container py-4 text-center">
+  <div class="row mb-3">
+    <% ['B', 'I', 'N', 'G', 'O'].each do |letter| %>
+      <div class="col fw-bold fs-2"><%= letter %></div>
     <% end %>
-    <li id="num_<%= num %>" class="<%= selected ? 'selected' : '' %>"><%= num %></li>
-  <% end %>
-</ul>
+  </div>
+
+  <div class="row mx-auto" style="max-width: 400px;">
+    <% board_array = @game.board.to_a %>
+    <% 5.times do |col| %>
+      <div class="col px-1">
+        <% 15.times do |row| %>
+          <% num, selected = board_array[col * 15 + row] %>
+          <div class="mb-2">
+            <div id="num_<%= num %>" class="btn w-100 py-2 fs-6 border rounded <%= selected ? 'btn-primary text-white' : 'btn-light' %>">
+              <%= num %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

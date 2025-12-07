@@ -6,7 +6,7 @@
 <h2>
   <%= @game.name %>
   <% if @player.master %>
-    <%= link_to t(:reset), reset_games_path(slug: @game.slug), :class => "btn btn-danger", data: { turbo_prefetch: "false" } %>
+    <%= link_to t(:reset), reset_games_path(slug: @game.slug), class: "btn btn-danger", data: { turbo_prefetch: "false", turbo_confirm: t(:reset_confirm) } %>
   <% end %>
 </h2>
 
