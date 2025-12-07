@@ -60,11 +60,11 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "price-history.tosh.io" }
+  # config.action_mailer.default_url_options = { host: "bingo.tosh.io" }
 
   # Configure Postmark as the delivery method.
-  config.action_mailer.delivery_method = :postmark
-  config.action_mailer.postmark_settings = { api_token: ENV["POSTMARK_SERVER_API_TOKEN"] }
+  # config.action_mailer.delivery_method = :postmark
+  # config.action_mailer.postmark_settings = { api_token: ENV["POSTMARK_SERVER_API_TOKEN"] }
 
   # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
   # config.action_mailer.smtp_settings = {
