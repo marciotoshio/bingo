@@ -1,21 +1,19 @@
-<div class="player">
-  <h2><%= player.name %></h2>
-  <ul class="card">
-    <% player.card.each_with_index do |(num, selected), index| %>
-      <% if(index % 5 == 0) %>
-        <li class="header"><%= ['B', 'I', 'N', 'G', 'O'][index / 5] %></li>
-      <% end %>
-      <% if(num == :X) %>
-        <li class="selected"><%= num %></li>
-      <% else %>
-        <li class="<%= selected ? 'selected' : '' %>">
-          <% if(@no_link) %>
-            <%= num %>
-          <% else %>
-            <%= link_to num, select_number_games_path(number: num) %>
-          <% end %>
-        </li>
-      <% end %>
+<div class="container py-4 text-center">
+  <div class="row mb-3">
+    <% ['B', 'I', 'N', 'G', 'O'].each do |letter| %>
+      <div class="col fw-bold fs-2"><%= letter %></div>
     <% end %>
-  </ul>
+  </div>
+
+  <div class="row row-cols-5 g-2 mx-auto" style="max-width: 400px;">
+    <% player.card.each do |num, selected| %>
+      <div class="col">
+        <% if num == :X %>
+          <div class="btn w-100 py-3 fs-4 border rounded btn-light">X</div>
+        <% else %>
+          <%= link_to num, select_number_games_path(number: num), method: :post, class: "btn w-100 py-3 fs-4 border rounded #{selected ? 'btn-primary text-white' : 'btn-light'}" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
