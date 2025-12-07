@@ -1,11 +1,47 @@
 <div class="game-controls">
-  <div class="share-container">
-    <label for="share-url">Share url</label>
-    <input id="share-url" class="form-control" type="text" value="<%= @game.share_url %>" readonly>
+  <div class="share-container mb-3">
+    <label for="share-url" class="form-label fw-bold">Share URL</label>
+    <div class="input-group">
+      <input id="share-url" class="form-control" type="text" value="<%= @game.share_url %>" readonly>
+      <button class="btn btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('share-url').value)">
+        📋 Copy
+      </button>
+    </div>
   </div>
+
+  <div class="qr-container mb-3 text-center">
+    <button class="btn btn-outline-primary btn-sm mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#qrCode" aria-expanded="false">
+      📱 Show QR Code
+    </button>
+    <div class="collapse" id="qrCode">
+      <div id="qrcode" class="d-inline-block p-2 bg-white rounded"></div>
+    </div>
+  </div>
+
   <h2><%= t(:draw) %></h2>
   <%= link_to t(:draw),
     draw_games_path(slug: @game.slug),
     class: "btn btn-primary btn-lg w-100",
     data: { turbo_prefetch: "false" } %>
 </div>
+
+<script>
+  document.addEventListener('turbo:load', function() {
+    const qrContainer = document.getElementById('qrcode');
+    if (qrContainer && qrContainer.children.length === 0) {
+      const script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js';
+      script.onload = function() {
+        new QRCode(qrContainer, {
+          text: '<%= @game.share_url %>',
+          width: 200,
+          height: 200,
+          colorDark: '#667eea',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.H
+        });
+      };
+      document.head.appendChild(script);
+    }
+  });
+</script>
