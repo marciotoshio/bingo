@@ -47,6 +47,8 @@ function addNewPlayer(player) {
 
 function showQrCode() {
   const modalElement = document.getElementById('qrcode-modal');
+  if (modalElement == null) return;
+
   const modal = bootstrap.Modal.getOrCreateInstance(modalElement);
   modal.toggle();
 }
