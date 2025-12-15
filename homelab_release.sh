@@ -29,4 +29,7 @@ echo "   - ${REGISTRY_HOST}/${IMAGE_NAME}:${COMMIT_SHA}"
 
 echo "♻ Refreshing container..."
 cd ../homelab
-podman compose --in-pod false up -d bingo
+podman pull ${REGISTRY_HOST}/${IMAGE_NAME}:latest
+systemctl --user daemon-reload
+systemctl --user restart bingo.service
+
