@@ -9,7 +9,7 @@
           <% num, selected = card_array[col * 5 + row] %>
           <div class="mb-2">
             <% if num == :X %>
-              <div class="btn w-100 py-3 fs-4 border rounded btn-light">X</div>
+              <div class="btn w-100 py-3 fs-4 border rounded btn-primary text-white">X</div>
             <% else %>
               <%= link_to num, select_number_games_path(number: num), method: :post, class: "btn w-100 py-3 fs-4 border rounded #{selected ? 'btn-primary text-white' : 'btn-light'}" %>
             <% end %>
