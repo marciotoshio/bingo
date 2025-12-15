@@ -31,6 +31,14 @@ function setLastNumber(lastNumber, rawLastNumber) {
   $(".last-number").text(lastNumber);
   const element = $('#num_' + rawLastNumber);
   element.removeClass('btn-light').addClass('btn-primary text-white');
+
+  const bigScreen = document.querySelector('.big-screen');
+  if (bigScreen) {
+    const locale = bigScreen.dataset.locale || 'en';
+    if (window.playBingoAudio) {
+      window.playBingoAudio(lastNumber.replace(/\s+/g, '').toLowerCase(), locale);
+    }
+  }
 }
 
 function reset() {

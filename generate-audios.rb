@@ -149,7 +149,7 @@ def generate_speech(polly, file, text, language)
     voice_id: VOICES[language]
   )
 
-  File.open("app/assets/audios/#{language}/#{VOICES[language]}/#{file}", "wb") { |f| f.write(resp.audio_stream.read) }
+  File.open("public/audios/#{language}/#{file}", "wb") { |f| f.write(resp.audio_stream.read) }
 end
 
 numbers = (1..75).map do |i|
@@ -165,6 +165,9 @@ numbers = (1..75).map do |i|
     { file: "o#{i}.mp3", text: "<speak>O #{i}</speak>" }
   end
 end
+
+generate_speech(polly, "start.mp3", "<speak>Let's play Bingo!</speak>", "en")
+generate_speech(polly, "start.mp3", "<speak>Vamos jogar Bingo!</speak>", "pt-BR")
 
 numbers.each do |number|
   puts "Generating #{number[:file]} in en and pt-BR"

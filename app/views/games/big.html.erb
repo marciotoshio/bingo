@@ -1,4 +1,4 @@
-<div class="game-page big-screen">
+<div class="game-page big-screen" data-locale="<%= I18n.locale %>">
   <%= hidden_field_tag(:game_id, @game.id) %>
 
   <div id="qrcode-modal" class="modal" tabindex="-1">
@@ -20,6 +20,7 @@
       <h1 class="game-title">LET'S BINGO!</h1>
       <h2 class="game-name">
         <%= @game.name %>
+        <button class="btn btn-primary" onclick="playStartAudio('<%= I18n.locale %>')">Play Audio</button>
       </h2>
     </div>
 
